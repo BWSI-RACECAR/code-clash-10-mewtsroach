@@ -30,70 +30,51 @@ Input: “a ban on that book”;                                Output: ”b=2, 
 Input: “good food for nice mice”;                           Output: ”f=2, 4 rhyming words”
 Input: “howdy rowdy hikers hope you have a great time”;     Output: "h=4, 2 rhyming words”
 """
-import itertools
 
 class Solution:
-    def song_analyze(self, lyric):
+    def song_analyze(self,lyric):
         # type lyric: string
         # return: string
         words = lyric.split(" ")
         first_letters = []
         alit_letters = []
-        letter_count = []
-        word_ending = []
+        letter_count =[]
+        word_endings =[]
         filtered_endings = []
         rhyme_amount = []
         rhyme_count = 0
         for i in range(len(words)):
-            if words[i][0] in first_letters:
-                if words[i][0] in alit_letters:
-                    letter_count[alit_letters.index(words[1][0])] += 1
+            if(words[i][0] in first_letters):
+                if(words[i][0] in alit_letters):
+                    letter_count[alit_letters.index(words[i][0])] += 1
                 else:
-                    alit_letters.append(words[1][0])
+                    alit_letters.append(words[i][0])
                     letter_count.append(2)
             else:
-                first_letters.append(words[1][0])
+                first_letters.append(words[i][0])
+
         for j in range(len(words)):
-            if words[j][-3:] in word_ending:
-                if words[j][-3:] in filtered_endings:
+            if(words[j][-3:] in word_endings):
+                if(words[j][-3:] in filtered_endings):
                     rhyme_amount[filtered_endings.index(words[j][-3:])] += 1
                 else:
                     filtered_endings.append(words[j][-3:])
                     rhyme_amount.append(2)
             else:
-                word_ending.append(words[j][-3:])
+                word_endings.append(words[j][-3:])
         for k in range(len(rhyme_amount)):
             rhyme_count += rhyme_amount[k]
 
         final_string = ""
         for l in range(len(alit_letters)):
-            final_string=final_string+"{letter}={number}, ".format(letter = alit_letters[l], number=letter_count[l])
+            final_string=final_string+"{letter}={number}, ".format(letter = alit_letters[l],number=letter_count[l])
         return final_string + "{rhymes} rhyming words".format(rhymes=rhyme_count)
-        """letter_lst = []
-        rhyming = 0
-        lyric = lyric.split(' ')
-        for i in lyric:
-            for j in lyric:
-                if i[0] == j[0]:
-                    letter_lst.append((i[0], 1))
-                if i[-3:] == j[-3:]:
-                    rhyming += 1
-        end_str = ""
-        for letter, number in itertools.groupby(letter_lst, lambda x: x[0]):
-            end_str = end_str + str(letter) + "=" + str(sum(list(number)[1])) + ", "
-        end_str = end_str + str(rhyming) + " rhyming words"
-        return end_str"""
-
-        # TODO: Write code below to return a string with the solution to the prompt
-
-
 
 def main():
     string1 = input()
     tc1 = Solution()
     ans = tc1.song_analyze(string1)
     print(ans)
-
 
 if __name__ == "__main__":
     main()
