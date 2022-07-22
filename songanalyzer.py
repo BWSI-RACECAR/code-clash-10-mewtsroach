@@ -47,16 +47,12 @@ class Solution:
                     rhyming += 1
         end_str = ""
         for letter, number, in itertools.groupby(letter_lst):
-            end_str = end_str + letter, + "=" + number + ", "
-        end_str = end_str + rhyming + " rhyming words"
+            end_str = end_str + str(letter), + "=" + str(number) + ", "
+        end_str = end_str + str(rhyming) + " rhyming words"
         return end_str
 
-
-
-
-
         # TODO: Write code below to return a string with the solution to the prompt
-        pass
+
 
 
 def main():
