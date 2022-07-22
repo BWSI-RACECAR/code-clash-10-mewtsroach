@@ -42,12 +42,12 @@ class Solution:
         for i in lyric:
             for j in lyric:
                 if i[0] == j[0]:
-                    letter_lst.append(i[0])
+                    letter_lst.append((i[0], 1))
                 if i[-3:] == j[-3:]:
                     rhyming += 1
         end_str = ""
-        for letter, number, in itertools.groupby(letter_lst):
-            end_str = end_str + str(letter) + "=" + str(sum(list(number))) + ", "
+        for letter, number, in itertools.groupby(letter_lst, lambda x: x[0]):
+            end_str = end_str + str(letter) + "=" + str(sum(list(number)[1])) + ", "
         end_str = end_str + str(rhyming) + " rhyming words"
         return end_str
 
