@@ -46,7 +46,7 @@ class Solution:
                 if i[-3:] == j[-3:]:
                     rhyming += 1
         end_str = ""
-        for letter, number, in itertools.groupby(letter_lst, lambda x: x[0]):
+        for letter, number in itertools.groupby(letter_lst, lambda x: x[0]):
             end_str = end_str + str(letter) + "=" + str(sum(list(number)[1])) + ", "
         end_str = end_str + str(rhyming) + " rhyming words"
         return end_str
