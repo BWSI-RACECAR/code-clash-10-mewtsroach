@@ -30,26 +30,26 @@ Input: “a ban on that book”;                                Output: ”b=2, 
 Input: “good food for nice mice”;                           Output: ”f=2, 4 rhyming words”
 Input: “howdy rowdy hikers hope you have a great time”;     Output: "h=4, 2 rhyming words”
 """
-
+import itertools
 
 class Solution:
     def song_analyze(self, lyric):
         # type lyric: string
         # return: string
-        letter_dict = {}
+        letter_lst = []
         rhyming = 0
         lyric.split(' ')
         for i in lyric:
             for j in lyric:
                 if i[0] == j[0]:
-                    letter_dict[i[0]] += 1
+                    letter_lst.append(i[0])
                 if i[1:] == j[1:]:
                     rhyming += 1
-        str = ""
-        for letter, number, in letter_dict:
-            str = str + letter, + "=" + number + ", "
-        str = str + rhyming + " rhyming words"
-        return str
+        end_str = ""
+        for letter, number, in itertools.groupby(letter_lst):
+            end_str = end_str + letter, + "=" + number + ", "
+        end_str = end_str + rhyming + " rhyming words"
+        return end_str
 
 
 
