@@ -38,7 +38,7 @@ class Solution:
         # return: string
         letter_lst = []
         rhyming = 0
-        lyric.split(' ')
+        lyric = lyric.split(' ')
         for i in lyric:
             for j in lyric:
                 if i[0] == j[0]:
