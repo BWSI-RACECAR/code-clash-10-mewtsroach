@@ -47,7 +47,7 @@ class Solution:
                     rhyming += 1
         end_str = ""
         for letter, number, in itertools.groupby(letter_lst):
-            end_str = end_str + str(letter) + "=" + str(x for x in number) + ", "
+            end_str = end_str + str(letter) + "=" + str([x for x in number]) + ", "
         end_str = end_str + str(rhyming) + " rhyming words"
         return end_str
 
